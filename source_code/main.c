@@ -51,12 +51,6 @@ main (int argc, const char *argv[])
 	}
       else
 	{
-#if 0
-	  printf ("ok, get client :\n");
-	  char str[] = "xxx.xxx.xxx.xxx\0";
-	  inet_ntop (AF_INET, &new_addr.sin_addr, str, sizeof (str));
-	  printf ("addr: %s\n", str);
-#endif
 	  server_client (new_fd);
 	}
     }

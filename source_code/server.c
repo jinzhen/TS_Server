@@ -141,28 +141,11 @@ get_file (int new_fd)
 void
 server_client (int new_fd)
 {
-  int mode = -1;
   char quest_msg[BUF_SIZE];
   memset (quest_msg, '\0', BUF_SIZE);
 
   read (new_fd, quest_msg, BUF_SIZE);
-  printf ("quest_msg:|%s\n", quest_msg);
-
-  mode = analysize (quest_msg);
-  switch (mode)
-    {
-    case 0:
-      write (new_fd, "OK\0", 3);
-      send_file (new_fd);
-      break;
-    case 1:
-      write (new_fd, "OK\0", 3);
-      get_file (new_fd);
-      break;
-    default:
-      printf ("error mode\n");
-      break;
-    }
+  printf ("quest_msg:%s\n", quest_msg);
 
   return;
 
