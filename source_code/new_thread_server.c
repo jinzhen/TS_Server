@@ -9,8 +9,10 @@
 #include <stdio.h>
 #include "Server.h"
 
-void createThreadToService() {
-    
+void send_heart_beat_message(int fd) {
+    while (1) {
+        write(fd, "HB", BUF_SIZE);
+    }
     
 }
 

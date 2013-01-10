@@ -126,8 +126,17 @@ server_client (int new_fd)
     
     read (new_fd, quest_msg, BUF_SIZE);
     printf ("quest_msg:%s\n", quest_msg);
-    
-    write(new_fd, "OK", BUF_SIZE);
+    int type = analysize(quest_msg);
+    switch (type) {
+        case MESSAGE_HEART_BEAT_TYPE:
+        {
+            send_heart_beat_message(new_fd);
+        }
+            break;
+            
+        default:
+            break;
+    }
     
     return;
     

@@ -37,4 +37,6 @@
 #define P_NAME 1024
 char path_name[P_NAME];		/* the name of file that server will send  */
 
+#define MESSAGE_HEART_BEAT_TYPE 0
+
 #endif

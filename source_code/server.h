@@ -24,8 +24,7 @@ int analysize(char *quest);
 void sig_int(int signo);
 void sig_chld(int signo);
 
-
-
+void send_heart_beat_message(int fd);
 
 
 
