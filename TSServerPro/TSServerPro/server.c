@@ -37,7 +37,9 @@ sig_int(int signo) {
 
 void
 sig_chld(int signo) {
-    
+    pid_t pid;
+    int stat;
+    while ((pid = waitpid(-1, &stat, 0)) > 0);
 }
 
 /* get the fd of the socket */
@@ -124,8 +126,8 @@ server_client (int new_fd)
     char quest_msg[BUF_SIZE];
     while(1) {
 	    memset (quest_msg, '\0', BUF_SIZE);
-	    int n = recv (new_fd, quest_msg, BUF_SIZE, 0);
-	    printf ("read quest_msg:|%d, %s|\n", n, quest_msg);
+	    ssize_t n = recv (new_fd, quest_msg, BUF_SIZE, 0);
+	    printf ("read quest_msg:|%zd, %s|\n", n, quest_msg);
 	    send (new_fd, quest_msg, n, 0);
 
 	//    send_heart_beat_message(new_fd);
